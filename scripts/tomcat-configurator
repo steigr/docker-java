@@ -1,0 +1,4 @@
+#!sh
+
+export JAVA_OPTS="$@"
+set -- JAVA_HOME="$JAVA_HOME" CATALINA_HOME="$CATALINA_HOME" CATALINA_TMPDIR="$CATALINA_TMPDIR" "$(command -v su-exec)" "$APPLICATION_USER" "$CATALINA_HOME/bin/catalina.sh" run
