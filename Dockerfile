@@ -16,8 +16,7 @@ RUN  apk add --no-cache --virtual .build-deps libcap \
  &&  apk del .build-deps \
  &&  rm -rf /var/cache/apk/*
 
-RUN  set -x \
- &&  export pkgname=tomcat-native pkgver=1.2.12 \
+RUN  export pkgname=tomcat-native pkgver=1.2.12 \
  &&  apk add --no-cache --virtual .runtime-deps apr \
  &&  apk add --no-cache --virtual .build-deps apr-dev chrpath openjdk8 curl tar openssl-dev gcc make libc-dev \
  &&  mkdir /usr/src \
