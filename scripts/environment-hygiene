@@ -1,0 +1,16 @@
+#!sh
+
+# clear unneeded environment variables
+[[ $preserve ]] || preserve=()
+preserve+=(HOME)
+preserve+=(USER)
+preserve+=(PATH)
+
+# clean except preserve
+filter=$(for p in ${preserve[@]}; do printf -- "-e ^$p$ "; done)
+for var in $(printenv | cut -f1 -d= | grep -v $filter); do unset $var; done
+
+# see https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
+set -- TZ=:/etc/localtime "$@"
+# set language and sorting
+set -- LANG=${LANG:-C.UTF-8} LC_ALL=${LC_ALL:-C.UTF-8} "$@"
