@@ -32,8 +32,8 @@ RUN  export pkgname=tomcat-native pkgver=1.2.12 \
  &&  rm -rf /usr/src \
  &&  apk del .build-deps
 
-ADD scripts/with-reaper         /with-reaper
-ADD scripts/environment-hygiene /environment-hygiene
-
-ADD scripts/log4j-configurator  /log4j-configurator
-ADD scripts/tomcat-configurator /tomcat-configurator
+ADD scripts/with-reaper           /with-reaper
+ADD scripts/environment-hygiene   /environment-hygiene
+ADD scripts/log4j-configurator    /log4j-configurator
+ADD scripts/tomcat-configurator   /tomcat-configurator
+ADD scripts/timezone-configurator /timezone-configurator

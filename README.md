@@ -21,6 +21,7 @@ Futhermore you may use the included shell scripts:
 
 - `. /tomcat-configurator` relies on `$CATALINA_HOME` and `$APPLICATION_USER` and overwrites the "$@" variable. You may then start tomcat like `exec -- JAVA_OPTS="$JAVA_OPTS" "$@"`
 - `. /log4j-configurator` (TBD) configures Log4J and prepares `$JAVA_OPTS`
+- `. /timezone-configurator` append environment variable `TIMEZONE` to `$JAVA_OPTS`
 
 ### Examples
 
