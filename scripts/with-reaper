@@ -1,4 +1,4 @@
 #!sh
 
 pidof tini >/dev/null 2>&1 && source /.env && rm /.env || printenv | sed -e 's/^/export /' -e 's/=/="/' -e 's/$/"/' > /.env
-pidof tini >/dev/null 2>&1 || exec env - sh -c "exec $(command -v tini) -- $0 $@"
+pidof tini >/dev/null 2>&1 || exec env - "$(command -v tini)" -- "$0" "$@"
