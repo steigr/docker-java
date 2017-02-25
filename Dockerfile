@@ -24,7 +24,7 @@ RUN  export pkgname=tomcat-native pkgver=1.2.12 \
  &&  curl -sL http://www-eu.apache.org/dist/tomcat/tomcat-connectors/native/$pkgver/source/$pkgname-$pkgver-src.tar.gz \
      | tar -xvz \
  &&  cd tomcat-native-$pkgver-src/native \
- &&  ./configure --prefix=/usr --with-java-home=$(find /usr -name jni_md.h | head -1 | xargs dirname | xargs dirname) --with-ssl=yes \
+ &&  ./configure --prefix=/usr --with-java-home=$(find /usr -name jni_md.h | grep x86_64-alpine-linux-musl | head -1 | xargs dirname | xargs dirname) --with-ssl=yes \
  &&  DESTDIR=/usr/src/tomcat-native-${pkgver}-dist make install \
  &&  ( cd /usr/src/tomcat-native-${pkgver}-dist; find * -name '*.so*' -type f | xargs -t -r -n1 strip -s) \
  &&  ( cd /usr/src/tomcat-native-${pkgver}-dist; tar -c $(find * -name '*.so*')) | tar -x -C / \
