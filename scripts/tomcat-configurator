@@ -41,7 +41,6 @@ tomcat_connectors | while read port; do
   tomcat_connector_settings "$port" | while read var; do
     val="${var#*=}"
     var="${var%%=*}"
-    var="$(echo $var | sed -e 's/_/-/g' | tr '[:upper:]' '[:lower:]')"
     printf '%s=%s\n' "$var" "$val"
     if [[ "$var" = "upgrade" ]]; then
       command -v tomcat_connector_upgrade_$val \
@@ -52,7 +51,7 @@ tomcat_connectors | while read port; do
     fi
   done | tr '\n' ',' | sed -e 's/,$//'
   printf '\e[0m\n'
-done
+done || true
 
 [[ -z "$TRACE" ]] || cat "$CATALINA_HOME/conf/server.xml"
 
