@@ -43,6 +43,4 @@ RUN  export XMLSTARLET_VERSION=1.6.1-r1 \
 
 ADD scripts/with-reaper           /with-reaper
 ADD scripts/environment-hygiene   /environment-hygiene
-ADD scripts/log4j-configurator    /log4j-configurator
-ADD scripts/tomcat-configurator   /tomcat-configurator
 ADD scripts/timezone-configurator /timezone-configurator
