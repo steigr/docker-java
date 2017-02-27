@@ -32,6 +32,15 @@ RUN  export pkgname=tomcat-native pkgver=1.2.12 \
  &&  rm -rf /usr/src \
  &&  apk del .build-deps
 
+RUN  export XMLSTARLET_VERSION=1.6.1-r1 \
+ &&  apk add --no-cache --virtual .runtime-deps libxml2 libxslt \
+ &&  apk add --no-cache --virtual .build-deps curl \
+ &&  curl -Lo xmlstarlet-${XMLSTARLET_VERSION}.apk https://github.com/menski/alpine-pkg-xmlstarlet/releases/download/${XMLSTARLET_VERSION}/xmlstarlet-${XMLSTARLET_VERSION}.apk \
+ &&  apk add --allow-untrusted xmlstarlet-${XMLSTARLET_VERSION}.apk \
+ &&  apk del .build-deps \
+ &&  rm -rf /var/cache/apk/* \
+            xmlstarlet-${XMLSTARLET_VERSION}.apk
+
 ADD scripts/with-reaper           /with-reaper
 ADD scripts/environment-hygiene   /environment-hygiene
 ADD scripts/log4j-configurator    /log4j-configurator
