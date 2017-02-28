@@ -1,9 +1,5 @@
 # Oracle JDK/JRE
 
-[![](https://images.microbadger.com/badges/image/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own commit badge on microbadger.com")
-
 - Based on [alpinelinux with Oracle JRE](http://hub.docker.com/r/anapsix/alpine-java)
 
 ## Usage
@@ -80,3 +76,9 @@ preserve=(JAVA_HOME CATALINA_TMPDIR)
 # thus PID 1 has a clean environment too.
 . /with-reaper
 ```
+
+## Docker Image
+
+[![](https://images.microbadger.com/badges/image/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/commit/steigr/java.svg)](http://microbadger.com/images/steigr/java "Get your own commit badge on microbadger.com")
