@@ -1,4 +1,11 @@
 #!sh
 
-pidof tini >/dev/null 2>&1 && [[ -f /.env ]] && source /.env && rm /.env || printenv | sed -e 's/^/export /' -e 's/=/="/' -e 's/$/"/' > /.env
-pidof tini >/dev/null 2>&1 || exec env - ${TINI_SUBREAPER:+TINI_SUBREAPER=$TINI_SUBREAPER} "$(command -v tini)" -- "$0" "$@"
+if pidof tini </dev/null >/dev/null 2>&1; then
+	if test -f /.env; then
+		source /.env
+		rm -f /.env
+	fi
+else
+	printenv | sed -e 's/^/export /' -e 's/=/="/' -e 's/$/"/' > /.env
+	exec env - ${TINI_SUBREAPER:+TINI_SUBREAPER=$TINI_SUBREAPER} "$(command -v tini)" -- "$0" "$@"
+fi
