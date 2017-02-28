@@ -6,10 +6,10 @@ all: image
 	@true
 
 image:
-	sed 's#^FROM .*#FROM $(BASE)#' Dockerfile > Dockerfile.build
-	docker pull $$(grep ^FROM Dockerfile.build | awk '{print $$2}')
+	@sed 's#^FROM .*#FROM $(BASE)#' Dockerfile > Dockerfile.build
+	[[ "$(NO_PULL)" ]] || docker pull $$(grep ^FROM Dockerfile.build | awk '{print $$2}')
 	docker build --tag=$(IMAGE):$(VERSION) --file=Dockerfile.build .
-	rm Dockerfile.build
+	@rm Dockerfile.build
 
 run: image
 	docker run --rm --env=TRACE --name=$(shell basename $(IMAGE)) $(IMAGE):$(VERSION)
